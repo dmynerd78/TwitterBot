@@ -2,6 +2,9 @@ import urllib.request
 import sys
 import urllib.parse
 
+global debug
+debug = False
+
 try:
     import tweepy
 except Exception as e:
@@ -35,7 +38,8 @@ for item in remove:
 videoURL = "https://youtu.be/" + videoID
 
 url = urllib.request.urlopen("http://www.youtube.com/get_video_info?&video_id=%s" % videoID).read().decode("utf-8").split("&")
-#print(url)
+if debug:
+    print(url)
 for section in url:
     if section.startswith("auth"):
         author = section.replace("+", " ")[7:]
@@ -45,12 +49,12 @@ for section in url:
         for portion in section.split("%25"):
             if portion.startswith("2Bafv_user_") and not portion.startswith("2Bafv_user_id_"):
                 twitterHandle = portion.replace("2Bafv_user_", "")
-
-print("Author: '%s'\n"
-      "Title: '%s'\n"
-      "Twitter Handle: '%s'" % (author, title, twitterHandle))
+if debug:
+    print("Author: '%s'\n"
+          "Title: '%s'\n"
+          "Twitter Handle: '%s'" % (author, title, twitterHandle))
 title = urllib.parse.unquote(title.replace("+", " "))
-print(title)
+
 if "%" in title:
     print("Title: %s" % title)
     input("% in title. Please check to see if title has been decoded correctly")
@@ -66,5 +70,5 @@ def get_api(cfg):
   return tweepy.API(auth)
 
 api = get_api(cfg)
-status = api.update_status(status=tweet)
-print("Tweet posted: %s\n Tweet length: %s" % (tweet, len(tweet)))
+#status = api.update_status(status=tweet)
+print("Tweet posted: %s\nTweet length: %s characters" % (tweet, len(tweet)))
