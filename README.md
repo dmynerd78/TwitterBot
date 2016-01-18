@@ -1,5 +1,6 @@
 # TwitterBot
-Dminer78's Twitter Bot
+Do like a lot of youtube videos and want to post liked videos to a twitter account that's not connected to your youtube channel?
+Look no further! Just run `src/main.py` and give it a video url! 
 
 # What does this program do?
 Just run 'main.py' with the youtube link as an argument and the program will auto generate a tweet!
