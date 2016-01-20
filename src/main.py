@@ -75,7 +75,8 @@ def tweet_send(_message):
     api = get_api(cfg)
     try:
         api.update_status(status=_message)
-        input(colorPrint("Tweet sent! Please hit enter ", "1;36"))
+        colorPrint("Tweet sent!", "1;36")
+        input("Please hit enter ")
         sys.exit("Tweet successful")
     except tweepy.error.TweepError as _e:
         input("Uh oh! Something went wrong: %s" % _e)
@@ -164,6 +165,7 @@ def main(link):
                 ans = input("Do you want to update the author's twitter handle? (y/N) ")
                 if ans.lower().startswith("y"):
                     tHandle = input("Please type %s's twitter handle " % authorCurrent["original"])
+                    tHandle = tHandle.replace(" ", "")
                     authorCurrent["new"] = tHandle
                     authorsList[authorCurrent["original"]] = tHandle
                     # Possibly have some type of input instead of having a file?
@@ -186,7 +188,7 @@ def main(link):
                         tweetFile = tweetFile.read()
                         title = tweetFile
                         tweet["t"] = title
-                        # tweet["t] # TODO Make function to get tweet length
+                        # tweet["c"] # TODO Make function to get tweet length
                         print(title)
 
         except KeyboardInterrupt:
@@ -208,3 +210,5 @@ if __name__ == "__main__":
             tweet_send(message)
         except KeyboardInterrupt:
             sys.exit("KeyboardInterrupt")
+        except Exception as e:
+            input("An error occurred! %s" % e)
