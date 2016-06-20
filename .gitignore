@@ -1,5 +1,6 @@
 config.py
 test.py
+authors.json
 
 # JetBrain
 .idea
