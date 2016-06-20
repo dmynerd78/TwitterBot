@@ -8,11 +8,6 @@ Look no further! Just run `src/main.py` and give it a video url!
 Just run 'main.py' with the youtube link as an argument and the program will auto generate a tweet!
 You can edit edit the author to have the correct twitter handle, modify the tweet entirely then tell the program to send the tweet for you!
 
-## Requirements
-
-- Python 3
-- Tweepy (install by running ```pip install tweepy```)
-
 ## How to run the program
 
 1. Run ```src/main.py```
@@ -20,7 +15,7 @@ You can edit edit the author to have the correct twitter handle, modify the twee
 3. Go to the ```Keys and Access Tokens``` tab then hit ``Create my access token```
 4. Open up ```src/config.py``` and copy ```Access Token```, ```Access Token Secret```, ```Consumer Key (API Key)```, ```Consumer Secret (API Secret)``` to their respective locations in the config file.
 
-## Config file location
+## Data location
 
  - Windows: ```C:\[USER]\AppData\Local\dminer78\TwitterBot```
  - Mac: ```/Users/[USER]/Library/Application Support/TwitterBot```
